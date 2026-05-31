@@ -1,0 +1,19 @@
+[build]
+builder = "nixpacks"
+
+[[services]]
+name = "api"
+source = "backend"
+startCommand = "node src/index.js"
+
+[[services]]
+name = "frontend"
+source = "frontend"
+buildCommand = "npm install && npm run build"
+startCommand = "npx serve dist -l $PORT"
+
+[[services]]
+name = "admin"
+source = "admin"
+buildCommand = "npm install && npm run build"
+startCommand = "npx serve dist -l $PORT"

@@ -32,6 +32,8 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+app.get('/health', (req, res) => res.json({ ok: true }));
+
 app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/bultos', requireOperario, bultosRoutes);
 app.use('/api/admin', adminRoutes);
